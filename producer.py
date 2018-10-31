@@ -1,4 +1,3 @@
-
 import zmq
 import random
 import sys
@@ -14,13 +13,9 @@ socket.bind("tcp://127.0.0.1:5556")
 
 
 while True:
-    work_msg = {'num':12345}
-    
+    work_msg = {'num':12345} # TODO: PEP8
+
     socket.send_json(work_msg)
-    
+
     print(" to send ", work_msg)
     time.sleep(1)
-
-
-    
-    

@@ -21,17 +21,13 @@ collector_data={}
 #########
 
 
-for x in range (1000):
-    collector = collector_RX.recv_json()
+for x in range (1000): # TODO: PEP8
+    collector = collector_RX.recv_json() # TODO: use a better name, e.g., rx_dct
     if collector_data.get(collector['consumer']):
-        collector_data[collector['consumer']]= collector_data[collector['consumer']]+1
+        collector_data[collector['consumer']] += 1
     else:
-        collector_data[collector['consumer']]=1
-    if x==99:
+        collector_data[collector['consumer']] = 1
+    if x==99: # TODO: PEP8
         pprint.pprint(collector_data)
     print(collector_data)
     time.sleep(1)
-        
-
-
-    
