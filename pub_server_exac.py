@@ -1,4 +1,3 @@
-
 import zmq
 import random
 import sys
@@ -14,30 +13,28 @@ context = zmq.Context()
 socket = context.socket(zmq.PUB)
 socket.bind("tcp://*:%s" % port)
 
+# function for client to execute
 fun_s = '''
 def f(a,b):
-    #funcian TX to client and exec.
-    #print("Sum of To element")
+    # print("Sum of two elements")
     return a+b
 '''
-fun_topic =10000
+fun_topic = 10000
+data_topic = 10001
 
-data_topic= 10001
-string = str('test')
-# generate topic and masage randomly 
+string = str('test') # TODO: no need to convert a string to a string
+# generate topic and masage randomly
 while True:
-    topic = random.randrange(9999,10005)
-    messagedata = random.randrange(10,200)
-    
-    a=random.randrange(10,200)
-    b=random.randrange(10,200)
+    topic = random.randrange(9999,10005) # TODO: PEP8
+    messagedata = random.randrange(10,200) # TODO: PEP8
+
+    a=random.randrange(10,200) # TODO: PEP8
+    b=random.randrange(10,200) # TODO: PEP8
     data_s = b"%d,%d" % (a,b)
-    socket.send(b'%d %s'%(data_topic, data_s))
-    socket.send(b'%d %s'%(fun_topic, bytes(fun_s,'utf-8')))
+    socket.send(b'%d %s'%(data_topic, data_s)) # TODO: PEP8
+    socket.send(b'%d %s'%(fun_topic, bytes(fun_s,'utf-8'))) # TODO: PEP8
 
     print("data: ", a, b)
     print("funciont to TX: ", fun_s)
-    
+
     time.sleep(1)
-    
-    
