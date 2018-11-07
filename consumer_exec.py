@@ -6,8 +6,8 @@ import random
 import time
 
 
-port_RX = '5556'  # port PULL # TODO: PEP8
-port_TX = '5557'  #port PUSH  # TODO: PEP8
+port_RX = '5556'  
+port_TX = '5557'  
 
 ######  ZMQ
 context = zmq.Context()
@@ -20,8 +20,8 @@ consumer_TX.connect("tcp://127.0.0.1:5557")
 #############
 
 while True:
-    work=consumer_RX.recv_json() # TODO: PEP8
-    print("from producer ",work) # TODO: PEP8
+    work = consumer_RX.recv_json() 
+    print("from producer ",work) 
     exec(work['function'])
     print(f(work['data a'],work['data b']))
     a,b=(work['data a'],work['data b'])

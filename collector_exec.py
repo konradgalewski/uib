@@ -17,7 +17,7 @@ context = zmq.Context()
 collector_RX = context.socket(zmq.PULL)
 
 collector_RX.bind("tcp://127.0.0.1:5557")
-collector_data={}
+collector_data = {}
 #########
 
 for x in range (1000): # TODO: PEP8

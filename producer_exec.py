@@ -17,7 +17,7 @@ def f(a,b):
 
 while True:
 #for _ in range(5):
-    msg_ID=str(uuid.uuid4()) #random number random ID
+    msg_ID = str(uuid.uuid4()) #random number random ID
     work_msg = {'ID':msg_ID,'function':fun,'data a':random.randrange(1,1000), 'data b':random.randrange(1,1000)}
     print(work_msg)
     socket.send_json(work_msg)
