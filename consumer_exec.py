@@ -5,10 +5,6 @@ import json
 import random
 import time
 
-
-port_RX = '5556'  
-port_TX = '5557'  
-
 ######  ZMQ
 context = zmq.Context()
 consumer_RX = context.socket(zmq.PULL)
@@ -23,19 +19,12 @@ while True:
     work = consumer_RX.recv_json() 
     print("from producer ",work) 
     exec(work['function'])
-    print(f(work['data a'],work['data b']))
-    a,b=(work['data a'],work['data b'])
-    work.pop('data a')
-    work.pop('data b')
-    work['data']=f(a,b)
-    
-
    
+    dct = dict()
+    dct['ID'] = work['ID']
+    dct['result'] = f(work['data'])   
+    time.sleep(random.randrange(1, 5))
     
-    #data = work['num']
-    #result = {'consumer':c_ID,'num':data} # TODO: PEP8
-    #print(result)
-#    if data==0:
-    consumer_TX.send_json(work)
-    print('send to collector  ',work)
-    time.sleep(1)
+    consumer_TX.send_json(dct)
+    print('send to collector  ',dct)
+   
