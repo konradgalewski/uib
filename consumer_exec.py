@@ -4,7 +4,7 @@ import uuid
 import json
 import random
 import time
-
+#######################open more that 1 copy of consumer ################
 ######  ZMQ
 context = zmq.Context()
 consumer_RX = context.socket(zmq.PULL)
@@ -22,6 +22,7 @@ while True:
    
     dct = dict()
     dct['ID'] = work['ID']
+    dct['code'] = work['code']
     dct['result'] = f(work['data'])   
     time.sleep(random.randrange(1, 5))
     

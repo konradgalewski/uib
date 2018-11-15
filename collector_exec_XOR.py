@@ -44,7 +44,7 @@ while True:
                     print('sum of a+b = ', active_tasks[_id][1]['result']-active_tasks[_id][0]['result'])
                 else: print('sum of c+d = ', active_tasks[_id][1]['result']-active_tasks[_id][0]['result'])
         else:
-            print("sssss")
+            print("test")
         del active_tasks[_id]        
         
     
